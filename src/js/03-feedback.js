@@ -12,18 +12,13 @@ formEl.addEventListener('submit', onSubmit);
 function saveToStorage(event) {
   feedback[event.target.name] = event.target.value;
   localStorage.setItem(FEEDBACK_STORAGE_KEY, JSON.stringify(feedback));
-  getFromStorage();
 }
 
 function onSubmit(event) {
   event.preventDefault();
+  console.log(getPreviousValue(FEEDBACK_STORAGE_KEY));
   event.currentTarget.reset();
   localStorage.removeItem(FEEDBACK_STORAGE_KEY);
-}
-
-function getFromStorage() {
-  const message = parseJson(FEEDBACK_STORAGE_KEY);
-  console.log(message);
 }
 
 function getPreviousValue(key) {
